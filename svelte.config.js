@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@deno/svelte-adapter';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -6,7 +6,8 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter(),
-    prerender: { entries: ['*'] }
+    // Jos haluat edelleen prerenderöidä joitain reittejä:
+    // prerender: { entries: [] } // älä käytä ['*'] jos haluat SSR:n
   }
 };
 
