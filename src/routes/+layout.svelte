@@ -1,5 +1,5 @@
 <script lang="ts">
-  import favicon from '$lib/assets/favicon.svg';
+  import logo from '$lib/assets/DLCsitsit-logo.svg';
   import { notices } from '$lib/stores/notify';
   import { fly } from 'svelte/transition';
   import { api } from '$lib/api';
@@ -22,8 +22,8 @@
   }
 </script>
 
-<svelte:head>
-  <link rel="icon" href={favicon} />
+<svelte:head><title>DLC-sitsit - Reservation tool</title>
+  <link rel="icon" type="image/svg+xml" href={logo} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -31,7 +31,10 @@
 
 <div class="app">
   <header class="header">
-    <h1>DLC-sitsit</h1>
+    <div class="brand">
+      <img src={logo} alt="DLC-sitsit logo" class="logo" style="width:50px;height:auto" />
+      <h1>DLC-sitsit</h1>
+    </div>
 
     {#if $auth?.token}
       <button class="logout-btn" type="button" onclick={doLogout} aria-label="Log out">
@@ -184,5 +187,18 @@
     font-weight: 700;
     padding: 0 .25rem;
     line-height: 1;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+
+  .logo {
+    display: block;
+    width: 50px; height: auto;;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
   }
 </style>
